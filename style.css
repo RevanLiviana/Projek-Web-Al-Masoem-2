@@ -1,0 +1,146 @@
+/* Mobile-first responsive rewrite */
+:root{
+  --max-width: 1300px;
+  --accent: #9fd2fa;
+  --muted: #f0f3f5;
+  --link: #013ab4;
+  --card-gap: 16px;
+}
+
+html,body{height:100%;margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+
+.website{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Header */
+.site-header .header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.logo-al-ma-soem{max-width:220px;height:auto;width:38%;display:block;}
+.navbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.navbar a{
+  padding:8px 10px;
+  border-radius:6px;
+  color:#111;
+  background:transparent;
+  text-decoration:none;
+  font-size:14px;
+}
+.navbar a:focus,.navbar a:hover{background:rgba(0,0,0,0.05);outline:none;}
+
+/* Header brand: Ma'soem + Fakultas Teknik logos */
+.site-header .header-top { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.site-header .brand { display:flex; align-items:center; gap:12px; }
+.brand-link { display:inline-block; line-height:0; }
+
+/* Primary logo */
+.logo-al-ma-soem{
+  max-width:220px;
+  width:auto;
+  height:auto;
+  display:block;
+}
+
+/* Fakultas Teknik logo (beserta responsive sizes) */
+.logo-fakultas-teknik{
+  max-width:120px;
+  width:auto;
+  height:auto;
+  display:block;
+  filter: none; /* sesuaikan bila perlu */
+}
+
+/* Small screens: stack brand vertically and shrink logos */
+@media (max-width:599px){
+  .site-header .header-top { flex-direction:column; align-items:center; gap:8px; }
+  .site-header .brand { flex-direction:column; gap:6px; }
+  .logo-al-ma-soem{ max-width:180px; }
+  .logo-fakultas-teknik{ max-width:140px; }
+}
+
+/* Tablet: side-by-side, agak lebih kecil */
+@media (min-width:600px) and (max-width:991px){
+  .logo-al-ma-soem{ max-width:180px; }
+  .logo-fakultas-teknik{ max-width:110px; }
+}
+
+/* Laptop / MacBook Air and up */
+@media (min-width:992px){
+  .logo-al-ma-soem{ max-width:220px; }
+  .logo-fakultas-teknik{ max-width:120px; }
+}
+
+/* Hero */
+.hero .selamat-datang{width:100%;height:auto;display:block;border-radius:8px;object-fit:cover;}
+
+/* Sections */
+.section-title{font-size:20px;margin:24px 0 12px;}
+
+.announcements .cards{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: var(--card-gap);
+}
+.card{background:#fff;border-radius:8px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,0.06);display:flex;flex-direction:column;align-items:flex-start;gap:8px;}
+.card img{width:100%;height:auto;border-radius:6px;object-fit:cover;}
+.card .p, .card a{color:var(--link);font-weight:500;text-decoration:none;}
+.card .date{font-size:13px;color:#777;}
+
+/* Latest news */
+.latest-news{margin-top:24px;}
+.fakultas-teknik{max-width:100%;height:auto;display:block;margin:12px 0;}
+.fakultas-teknik-kini{font-size:16px;line-height:1.5;color:#111;}
+
+/* Footer */
+.site-footer{margin-top:32px;padding-top:20px;border-top:1px solid #eee;display:flex;flex-direction:column;gap:12px;}
+@media (min-width:600px){
+  .site-header .header-top{padding:8px 0;}
+  .logo-al-ma-soem{width:160px;}
+  .announcements .cards{grid-template-columns:repeat(2,1fr);}
+  .card{padding:14px;}
+}
+
+@media (min-width:992px){
+  /* two-column main layout */
+  .site-main{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start;}
+  .logo-al-ma-soem{width:200px;}
+  .announcements .cards{grid-template-columns:repeat(2,1fr);}
+  .section-title{font-size:24px;}
+  .fakultas-teknik-kini{font-size:18px;}
+  .site-footer{flex-direction:row;justify-content:space-between;align-items:flex-start;}
+}
+
+@media (min-width:1280px){
+  /* MacBook / Desktop */
+  :root{--card-gap:24px;}
+  .logo-al-ma-soem{width:220px;}
+  .announcements .cards{grid-template-columns:repeat(2,1fr);gap:24px;}
+  .site-main{grid-template-columns:2.4fr 1fr;}
+}
+
+/* Accessibility */
+.navbar a:focus-visible{outline:2px solid #4a90e2;}
+/* Reset absolute positioning from old exported styles */
+.website [class*="rectangle"], .website [class^="rectangle-"]{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  width:100% !important;
+  height:auto !important;
+  background:var(--muted);
+  border-radius:8px;
+  margin:12px 0;
+}
